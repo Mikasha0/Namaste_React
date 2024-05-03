@@ -1,16 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Header } from "./src/components/Header";
+import { Body } from "./src/components/Body";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { AboutUs } from "./src/components/AboutUs";
+import { ErrorPage } from "./src/components/ErrorPage";
+import { RestaurantMenu } from "./src/components/RestaurantMenu";
 
-// const heading = React.createElement("h1", {className:"heading"}, "Hello World!!!");
-const title = <h1 className="title">Namaste React</h1>;
-
-const HeadingComponent = () => {
+const App = () => {
   return (
-    <div id="container">
-      {title}
-      <h2 className="description">All About ReactJS.</h2>
+    <div id="app">
+      <Header />
+      <Outlet />
     </div>
   );
 };
+
+//createBrowserRouter is a configuration for making routes. It ia an array of objects.
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "/", element: <Body /> },
+      { path: "/aboutUs", element: <AboutUs /> },
+      { path: "restaurants/:resId", element: <RestaurantMenu /> },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(HeadingComponent());
+root.render(<RouterProvider router={appRouter} />);
+//RouterProvider is a component.

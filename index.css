@@ -1,6 +1,155 @@
-.title{
-    color: crimson;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-wrapper {
+  /* position: relative; */
+  width: 100%;
+  background-color: gray;
+  z-index: 1;
+  /* height: 330px; */
+  /* background-image: url("./src/Images/burrger.jpg"); */
+  /* background-size: cover;
+  background-position: center; */
 }
-.description{
-    color: black;
+
+/* .header-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 330px;
+  background-color: rgba(0, 0, 0, 0.5);
+} */
+
+.navbar {
+  /* position: relative; */
+  z-index: 1;
+}
+
+.search-input {
+  padding: 16px 100px 16px 16px;
+}
+
+.search-button {
+  right: 102px;
+  top: 6.5px
+}
+
+.restaurant-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.restaurant-card {
+  width: calc(20% - 20px);
+  margin: 0 10px 20px;
+  cursor: pointer;
+  height: calc(20% -20px); /* Adjust the height as needed */
+}
+
+
+.res-filter{
+  border:1px solid black;
+  padding:5px 10px;  
+  border-radius: 5px;
+  margin-left: 30px;
+  color:red
+}
+
+.cloudinary {
+  width: 100%;
+  height: 200px;
+}
+
+.shimmer-container{
+  margin-top: 50px;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card{
+  width: 218px;
+  margin: 50px 12px 0px;
+  cursor: pointer;
+  height: 300px; 
+  border-radius: 5%;
+}
+
+.first-block{
+  width: 100%;
+  height: 150px;
+  background-color: #D3D3D3	;
+  border-radius: 3%;
+}
+
+.second-block{
+  width: 80%;
+  height: 10px;
+  background-color: #D3D3D3	;
+  margin:30px 0 0 10px;
+}
+
+.third-block{
+  width: 60%;
+  height: 10px;
+  background-color: #D3D3D3	;
+  margin:30px 0 0 10px;
+}
+
+.serch{
+  margin-top: 150px;
+  margin-bottom: 30px;
+}
+
+.res-menu{
+  margin-top: 70px;
+  padding: 10px 100px;
+  height: 100%;
+}
+
+.menu-items{
+  margin-top: 20px;
+  width: 100%;
+}
+
+.menu-img{
+  width: 150px;
+  height: 150px;
+  border-radius: 5%;
+}
+
+.items-btn{
+  position: relative;
+  bottom:20px;
+  left: 40px;
+}
+
+.img-width{
+  width: 150px;
+}
+@media (min-width: 640px) {
+  .restaurant-card {
+    width: calc(20% - 20px);
+    margin: 0 10px 20px;
+  }
+}
+
+@media (max-width: 639px) {
+  .restaurant-card {
+    width: calc(50% - 20px);
+    margin: 0 10px 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .restaurant-card {
+    width: calc(20% - 20px); 
+    margin: 0 10px 20px; 
+  }
 }
