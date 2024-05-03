@@ -2,26 +2,17 @@ import React, { useEffect, useState } from "react";
 import { MenuCard } from "../components/MenuCard";
 import { useParams } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
+import { MENU_API } from "../utils/constant";
+import { useFetchRestaurantMenu } from "../utils/useFetchRestaurantMenu";
 
 export const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  const {resId} = useParams();
+  const { resId } = useParams();
+  const  resInfo  = useFetchRestaurantMenu(resId);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  if (resInfo === null) {
+    return <Shimmer />;
+  }
 
-  const fetchMenu = async () => {
-    try {
-      const response = await fetch(
-        `https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${resId}&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER`
-      );
-      const menuDetails = await response.json();
-      setResInfo(menuDetails.data);
-    } catch (error) {
-      console.error("Error fetching menu:", error);
-    }
-  };
   const {
     name = "",
     avgRating = "",
@@ -31,15 +22,11 @@ export const RestaurantMenu = () => {
     totalRatingsString = "",
   } = resInfo?.cards[2]?.card?.card?.info ?? {};
 
-
   const { title = "" } =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card ?? {};
 
-      
-  return resInfo === null ? (
-    <Shimmer/>
-  ) : (
+  return (
     <React.Fragment>
       <div className="res-menu">
         <h1 className="text-2xl font-bold mb-8 text-yellow-400">{name}</h1>
@@ -71,7 +58,12 @@ export const RestaurantMenu = () => {
           <div className="menu-item">
             {resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards.map(
               (menu_items) => {
-                return <MenuCard  key={menu_items.card.info.id} menuInfo={menu_items.card.info} />;
+                return (
+                  <MenuCard
+                    key={menu_items.card.info.id}
+                    menuInfo={menu_items.card.info}
+                  />
+                );
               }
             )}
           </div>

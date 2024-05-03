@@ -133,6 +133,10 @@
 .img-width{
   width: 150px;
 }
+
+.top{
+  margin-top: 100px;
+}
 @media (min-width: 640px) {
   .restaurant-card {
     width: calc(20% - 20px);

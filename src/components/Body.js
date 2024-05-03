@@ -1,31 +1,39 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { RestaurantCard } from "./RestaurantCard";
-import { API_URL } from "../utils/constant";
 import { useState } from "react";
 import { Shimmer } from "./Shimmer";
+import { useFetchFilterRestroList } from "../utils/useFetchFilterRestroList";
+import { useOnlineStatus } from "../utils/useOnlineStatus";
 export const Body = () => {
-  const [restaurantList, setRestaurantList] = useState([]);
-  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [
+    restaurantList,
+    setRestaurantList,
+    filteredRestaurant,
+    setFilteredRestaurant,
+  ] = useFetchFilterRestroList();
 
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const onlineStatus = useOnlineStatus();
+  console.log(onlineStatus);
 
-  const fetchData = async () => {
-    const data = await fetch(API_URL);
-
-    const json = await data.json();
-    console.log(json);
-
-    setRestaurantList(
-      json.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  if (onlineStatus === false) {
+    console.log(onlineStatus);
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        {!onlineStatus && (
+          <div className="max-w-md bg-white p-8 rounded-lg shadow-md text-center">
+            <h2 className="text-2xl font-semibold mb-4">
+              It seems like you are not online
+            </h2>
+            <p className="text-gray-600">
+              Please check your internet connection and try again.
+            </p>
+          </div>
+        )}
+      </div>
     );
-    setFilteredRestaurant(
-      json.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  }
 
   if (restaurantList.length == 0) {
     return <Shimmer />;
@@ -74,9 +82,7 @@ export const Body = () => {
       </button>
       <div className="restaurant-container">
         {filteredRestaurant.map((data) => {
-          return (
-              <RestaurantCard key={data.info.id} resData={data.info} />
-          );
+          return <RestaurantCard key={data.info.id} resData={data.info} />;
         })}
       </div>
     </React.Fragment>
