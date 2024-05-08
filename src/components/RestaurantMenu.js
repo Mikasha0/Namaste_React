@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { MenuCard } from "../components/MenuCard";
 import { useParams } from "react-router-dom";
 import { Shimmer } from "./Shimmer";
-import { MENU_API } from "../utils/constant";
 import { useFetchRestaurantMenu } from "../utils/useFetchRestaurantMenu";
+import { RestaurantCategory } from "./RestaurantCategory";
 
 export const RestaurantMenu = () => {
   const { resId } = useParams();
-  const  resInfo  = useFetchRestaurantMenu(resId);
+  const resInfo = useFetchRestaurantMenu(resId);
+  const [showIndex, setShowIndex] = useState(0);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -26,19 +27,21 @@ export const RestaurantMenu = () => {
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card ?? {};
 
+  const categories =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => {
+      return (
+        c?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
+    });
+
   return (
     <React.Fragment>
       <div className="res-menu">
         <h1 className="text-2xl font-bold mb-8 text-yellow-400">{name}</h1>
         <div className="bg-white ">
           <div className="flex items-center justify-between mb-4">
-            <p className="text-sm font-bold text-gray-400">
-              {areaName}
-              {console.log(
-                resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card
-                  .card.itemCards
-              )}
-            </p>
+            <p className="text-sm font-bold text-gray-400">{areaName}</p>
             <div className="flex items-center">
               <p className="text-gray-600 mr-2">Rating : {avgRating}</p>
             </div>
@@ -54,18 +57,15 @@ export const RestaurantMenu = () => {
           </div>
         </div>
         <div className="menu-items">
-          <h1 className="text-black text-lg font-bold underline">{title}</h1>
           <div className="menu-item">
-            {resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards.map(
-              (menu_items) => {
-                return (
-                  <MenuCard
-                    key={menu_items.card.info.id}
-                    menuInfo={menu_items.card.info}
-                  />
-                );
-              }
-            )}
+            {categories.map((category,index) => (
+              <RestaurantCategory
+                key={category.card.card.title}
+                category={category?.card?.card}
+                showItem={index===showIndex?true:false}
+                setShowIndex={()=>{setShowIndex(index)}}
+              />
+            ))}
           </div>
         </div>
       </div>

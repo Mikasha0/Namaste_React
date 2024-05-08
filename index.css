@@ -48,16 +48,16 @@
   width: calc(20% - 20px);
   margin: 0 10px 20px;
   cursor: pointer;
-  height: calc(20% -20px); /* Adjust the height as needed */
+  height: calc(20% -20px);
+  /* Adjust the height as needed */
 }
 
-
-.res-filter{
-  border:1px solid black;
-  padding:5px 10px;  
+.res-filter {
+  border: 1px solid black;
+  padding: 5px 10px;
   border-radius: 5px;
   margin-left: 30px;
-  color:red
+  color: black
 }
 
 .cloudinary {
@@ -65,7 +65,7 @@
   height: 200px;
 }
 
-.shimmer-container{
+.shimmer-container {
   margin-top: 50px;
   width: 100%;
   padding: 20px;
@@ -73,70 +73,123 @@
   flex-wrap: wrap;
 }
 
-.shimmer-card{
-  width: 218px;
-  margin: 50px 12px 0px;
+.shimmer-card {
+  width: 219px;
+  margin: 20px 12px 0px;
   cursor: pointer;
-  height: 300px; 
+  height: 300px;
   border-radius: 5%;
 }
 
-.first-block{
+.first-block {
   width: 100%;
   height: 150px;
-  background-color: #D3D3D3	;
+  background-color: #D3D3D3;
   border-radius: 3%;
 }
 
-.second-block{
+.second-block {
   width: 80%;
   height: 10px;
-  background-color: #D3D3D3	;
-  margin:30px 0 0 10px;
+  background-color: #D3D3D3;
+  margin: 30px 0 0 10px;
 }
 
-.third-block{
+.third-block {
   width: 60%;
   height: 10px;
-  background-color: #D3D3D3	;
-  margin:30px 0 0 10px;
+  background-color: #D3D3D3;
+  margin: 30px 0 0 10px;
 }
 
-.serch{
+.search-bar {
+  margin-top: 50px;
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+}
+
+.search {
+  width: 40%;
+  height: 50px;
+  background-color: #D3D3D3;
+  margin-right: 10px;
+  border-radius: 3%;
+
+}
+
+.searchh-button {
+  width: 20%;
+  height: 40px; 
+  background-color: white;
+  margin:5px 387px;
+  border-radius: 3%;
+}
+
+.filter-container{
+  margin-top: 50px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  padding: 0 10px;
+}
+
+.filter-btn{
+  width: 17%;
+  height: 40px;
+  background-color: #D3D3D3;
+  border-radius: 5%;
+}
+
+.serch {
   margin-top: 150px;
   margin-bottom: 30px;
 }
 
-.res-menu{
+.res-menu {
   margin-top: 70px;
   padding: 10px 100px;
   height: 100%;
 }
 
-.menu-items{
+.menu-items {
   margin-top: 20px;
   width: 100%;
 }
 
-.menu-img{
+.menu-img {
   width: 150px;
   height: 150px;
   border-radius: 5%;
 }
 
-.items-btn{
+.items-btn {
   position: relative;
-  bottom:20px;
+  bottom: 20px;
   left: 40px;
 }
 
-.img-width{
+.img-width {
   width: 150px;
 }
 
-.top{
+.top {
   margin-top: 100px;
 }
+
+.food-img{
+  width: 200px;
+  height: 120px;
+}
+
+.item-btn{
+  padding:5px 20px;
+  background-color:black;
+  color:white;
+  margin:100px 0 0 65px;
+  border-radius: 5px;
+}
+
 @media (min-width: 640px) {
   .restaurant-card {
     width: calc(20% - 20px);
@@ -153,7 +206,7 @@
 
 @media (min-width: 768px) {
   .restaurant-card {
-    width: calc(20% - 20px); 
-    margin: 0 10px 20px; 
+    width: calc(20% - 20px);
+    margin: 0 10px 20px;
   }
 }

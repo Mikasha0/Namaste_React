@@ -5,7 +5,6 @@ export const MenuCard = ({ menuInfo }) => {
   const { name, defaultPrice, finalPrice, imageId, description, price } = menuInfo;
   
   const { rating } = menuInfo.ratings.aggregatedRating;
-  console.log(menuInfo);
 
   return (
     <div className="menu-card p-2">

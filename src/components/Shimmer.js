@@ -14,5 +14,16 @@ export const Shimmer = () => {
     return shimmerCards;
   };
 
-  return <div className="shimmer-container">{generateShimmerCards()}</div>;
+  return <div className="shimmer-container">
+    <div className="search-bar">
+      <div className="search">
+        <div className="searchh-button"></div>
+      </div>
+    </div>
+    <div className="filter-container">
+      <div className="filter-btn"></div>
+    </div>
+
+    {generateShimmerCards()}
+    </div>;
 };

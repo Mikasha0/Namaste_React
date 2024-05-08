@@ -5,7 +5,9 @@ export const useFetchFilterRestroList = () =>{
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
     
     useEffect(() => {
-      fetchData();
+      setTimeout(()=>{
+        fetchData();
+      }, 5000)
     }, []);
   
     const fetchData = async () => {

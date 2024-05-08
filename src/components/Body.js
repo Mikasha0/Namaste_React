@@ -1,9 +1,11 @@
-import React from "react";
-import { RestaurantCard } from "./RestaurantCard";
+import React, { useContext } from "react";
+import { RestaurantCard, withHighRatings } from "./RestaurantCard";
 import { useState } from "react";
 import { Shimmer } from "./Shimmer";
 import { useFetchFilterRestroList } from "../utils/useFetchFilterRestroList";
 import { useOnlineStatus } from "../utils/useOnlineStatus";
+import { OfflinePage } from "./OfflinePage";
+import { userContext } from "../utils/userContext";
 export const Body = () => {
   const [
     restaurantList,
@@ -15,29 +17,18 @@ export const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const onlineStatus = useOnlineStatus();
-  console.log(onlineStatus);
+
+  const RestaurantCardPromoted = withHighRatings(RestaurantCard);
 
   if (onlineStatus === false) {
-    console.log(onlineStatus);
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        {!onlineStatus && (
-          <div className="max-w-md bg-white p-8 rounded-lg shadow-md text-center">
-            <h2 className="text-2xl font-semibold mb-4">
-              It seems like you are not online
-            </h2>
-            <p className="text-gray-600">
-              Please check your internet connection and try again.
-            </p>
-          </div>
-        )}
-      </div>
-    );
+    return <OfflinePage />;
   }
 
   if (restaurantList.length == 0) {
     return <Shimmer />;
   }
+
+  const {user, setUserName } = useContext(userContext);
 
   return (
     <React.Fragment>
@@ -73,16 +64,55 @@ export const Body = () => {
         className="res-filter"
         onClick={() => {
           letFilteredData = restaurantList.filter(
-            (res) => res.info.avgRating > 4.3
+            (res) => res.info.avgRating > 4.5
           );
           return setFilteredRestaurant(letFilteredData);
         }}
       >
         Top Rated Restaurant
       </button>
+      <button
+        type="button"
+        className="res-filter"
+        onClick={() => {
+          letFilteredData = restaurantList.filter(
+            
+            (res) => res.info.sla.deliveryTime < 30
+          );
+          return setFilteredRestaurant(letFilteredData);
+        }}
+      >
+        Fast Delivery
+      </button>
+      <button
+        type="button"
+        className="res-filter"
+        onClick={() => {
+          letFilteredData = restaurantList.filter(
+            
+            (res) => res?.info?.veg ===true
+          );
+          return setFilteredRestaurant(letFilteredData);
+        }}
+      >
+        Veg Only
+      </button>
+      <input
+        placeholder="...write"
+        className="border border-gray-300 py-1.5 px-2 ml-3 rounded-lg"
+        value={user}
+        onChange={(e) => {
+          return setUserName(e.target.value)
+        }}
+      />
+
       <div className="restaurant-container">
         {filteredRestaurant.map((data) => {
-          return <RestaurantCard key={data.info.id} resData={data.info} />;
+          return data.info.avgRating > 4.5 ? (
+            <RestaurantCardPromoted key={data.info.id} resData={data.info} />
+          ) : (
+            <RestaurantCard key={data.info.id} resData={data.info} />
+          );
         })}
       </div>
     </React.Fragment>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./src/components/Header";
 import { Body } from "./src/components/Body";
@@ -6,13 +6,25 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { AboutUs } from "./src/components/AboutUs";
 import { ErrorPage } from "./src/components/ErrorPage";
 import { RestaurantMenu } from "./src/components/RestaurantMenu";
+import { userContext } from "./src/utils/userContext";
+import { useEffect } from "react";
 
 const App = () => {
+  const [username, setUserName] = useState();
+  useEffect(() => {
+    //fetching the username from backend and now showing it
+    const data = {
+      username: "Ankita",
+    };
+    setUserName(data.username);
+  }, []);
   return (
-    <div id="app">
-      <Header />
-      <Outlet />
-    </div>
+    <userContext.Provider value={{ user: username, setUserName }}>
+      <div id="app">
+        <Header />
+        <Outlet />
+      </div>
+    </userContext.Provider>
   );
 };
 
