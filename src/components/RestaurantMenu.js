@@ -23,9 +23,9 @@ export const RestaurantMenu = () => {
     totalRatingsString = "",
   } = resInfo?.cards[2]?.card?.card?.info ?? {};
 
-  const { title = "" } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-      ?.card ?? {};
+  // const { title = "" } =
+  //   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+  //     ?.card ?? {};
 
   const categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => {
@@ -58,12 +58,18 @@ export const RestaurantMenu = () => {
         </div>
         <div className="menu-items">
           <div className="menu-item">
-            {categories.map((category,index) => (
+            {categories.map((category, index) => (
               <RestaurantCategory
                 key={category.card.card.title}
                 category={category?.card?.card}
-                showItem={index===showIndex?true:false}
-                setShowIndex={()=>{setShowIndex(index)}}
+                showItem={index === showIndex ? true : false}
+                setShowIndex={() => {
+                  if(index===showIndex){
+                    setShowIndex(null)
+                  }else{
+                    setShowIndex(index)
+                  }
+                }}
               />
             ))}
           </div>

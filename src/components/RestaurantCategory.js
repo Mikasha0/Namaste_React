@@ -17,6 +17,7 @@ export const RestaurantCategory = ({ category, showItem, setShowIndex }) => {
         <span className="px-2">▼</span>
       </div>
       <div className="text-center">
+        
          {showItem===true?(<ItemList item={category.itemCards} />):null}
       </div>
     </div>
