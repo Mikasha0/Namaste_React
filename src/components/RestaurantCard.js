@@ -1,13 +1,11 @@
 import React, { useContext } from "react";
 import { IMAGE_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
-import { userContext } from "../utils/userContext";
 
 export const RestaurantCard = (props) => {
   const { resData } = props;
   const { name, avgRating, cloudinaryImageId, id } = resData;
   const deliveryTime = resData.sla.slaString;
-  const {user} = useContext(userContext)
   console.log(resData)
 
   return (
@@ -28,8 +26,6 @@ export const RestaurantCard = (props) => {
             Rating: <span className="text-yellow-500 text-sm">{avgRating}</span>
             /5
           </p>
-          <p className="text-gray-800 text-sm">{user}</p>
-
         </div>
       </Link>
     </div>

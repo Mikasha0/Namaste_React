@@ -1,5 +1,8 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 export const NavItems = () => {
+
+  const cartItems = useSelector((store)=> store.cart.item)
   return (
     <div className="nav-items flex items-center ml-auto">
       <ul className="flex space-x-8">
@@ -16,7 +19,7 @@ export const NavItems = () => {
             to="/cart"
             className="text-white hover:text-gray-800 font-semibold text-sm"
           >
-            Cart
+            Cart -({cartItems.length} items)
           </Link>
         </li>
         <li>

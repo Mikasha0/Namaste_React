@@ -28,8 +28,6 @@ export const Body = () => {
     return <Shimmer />;
   }
 
-  const {user, setUserName } = useContext(userContext);
-
   return (
     <React.Fragment>
       <div className="serch flex justify-center items-center h-7">
@@ -76,7 +74,6 @@ export const Body = () => {
         className="res-filter"
         onClick={() => {
           letFilteredData = restaurantList.filter(
-            
             (res) => res.info.sla.deliveryTime < 30
           );
           return setFilteredRestaurant(letFilteredData);
@@ -89,22 +86,21 @@ export const Body = () => {
         className="res-filter"
         onClick={() => {
           letFilteredData = restaurantList.filter(
-            
-            (res) => res?.info?.veg ===true
+            (res) => res?.info?.veg === true
           );
           return setFilteredRestaurant(letFilteredData);
         }}
       >
         Veg Only
       </button>
-      <input
+      {/* <input
         placeholder="...write"
         className="border border-gray-300 py-1.5 px-2 ml-3 rounded-lg"
         value={user}
         onChange={(e) => {
-          return setUserName(e.target.value)
+          return setUserName(e.target.value);
         }}
-      />
+      /> */}
 
       <div className="restaurant-container">
         {filteredRestaurant.map((data) => {
