@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { ItemList } from "./ItemList";
-import { clearItem, decreaseItem} from "../utils/cartSlice";
+import { clearItem, decreaseItem } from "../utils/cartSlice";
 import { increaseItem } from "../utils/cartSlice";
 import { IMAGE_URL } from "../utils/constant";
 export const Cart = () => {
@@ -11,13 +11,13 @@ export const Cart = () => {
     dispatch(clearItem());
   };
 
-  const increaseCartItem = (list) =>{
-    dispatch(increaseItem(list))
-  }
-  const decreaseCartItem = (list) =>{
-    dispatch(decreaseItem(list))
-  }
-
+  const adjustCartItem = (list, actionType) => {
+    if (actionType === "increase") {
+      dispatch(increaseItem(list));
+    } else if (actionType === "decrease") {
+      dispatch(decreaseItem(list));
+    }
+  };
 
   const containerClassName = cartData.length === 0 ? "bg-white" : "bg-gray-200";
 
@@ -52,16 +52,16 @@ export const Cart = () => {
                   <button
                     className="w-1/12 px-1 py-1 border border-black rounded-lg"
                     onClick={() => {
-                      increaseCartItem(list)
+                      adjustCartItem(list, "increase");
                     }}
                   >
                     +
                   </button>
-                 <p className="p-3">{list.quantity}</p> 
+                  <p className="p-3">{list.quantity}</p>
                   <button
                     className="w-1/12 px-1 py-1 border border-black rounded-lg "
                     onClick={() => {
-                      decreaseCartItem(list);
+                      adjustCartItem(list, "decrease");
                     }}
                   >
                     -
