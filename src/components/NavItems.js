@@ -30,14 +30,6 @@ export const NavItems = () => {
             About Us
           </Link>
         </li>
-        <li>
-          <a
-            href="#"
-            className="text-white hover:text-gray-800 font-semibold text-sm"
-          >
-            Restaurants
-          </a>
-        </li>
       </ul>
     </div>
   );

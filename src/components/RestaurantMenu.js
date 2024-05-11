@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { MenuCard } from "../components/MenuCard";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Shimmer } from "./Shimmer";
 import { useFetchRestaurantMenu } from "../utils/useFetchRestaurantMenu";
 import { RestaurantCategory } from "./RestaurantCategory";
+import { Shimmer } from "./Shimmer";
 
 export const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -22,10 +21,6 @@ export const RestaurantMenu = () => {
     costForTwoMessage = "",
     totalRatingsString = "",
   } = resInfo?.cards[2]?.card?.card?.info ?? {};
-
-  // const { title = "" } =
-  //   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-  //     ?.card ?? {};
 
   const categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => {
@@ -64,10 +59,10 @@ export const RestaurantMenu = () => {
                 category={category?.card?.card}
                 showItem={index === showIndex ? true : false}
                 setShowIndex={() => {
-                  if(index===showIndex){
-                    setShowIndex(null)
-                  }else{
-                    setShowIndex(index)
+                  if (index === showIndex) {
+                    setShowIndex(null);
+                  } else {
+                    setShowIndex(index);
                   }
                 }}
               />

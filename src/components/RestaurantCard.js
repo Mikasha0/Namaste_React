@@ -6,7 +6,6 @@ export const RestaurantCard = (props) => {
   const { resData } = props;
   const { name, avgRating, cloudinaryImageId, id } = resData;
   const deliveryTime = resData.sla.slaString;
-  console.log(resData)
 
   return (
     <div className="restaurant-card max-w-sm rounded overflow-hidden shadow-lg">

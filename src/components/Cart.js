@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ItemList } from "./ItemList";
 import { clearItem, decreaseItem } from "../utils/cartSlice";
 import { increaseItem } from "../utils/cartSlice";
 import { IMAGE_URL } from "../utils/constant";
@@ -20,6 +19,9 @@ export const Cart = () => {
   };
 
   const containerClassName = cartData.length === 0 ? "bg-white" : "bg-gray-200";
+  const grandTotal = cartData
+    .map((item) => (item.card.info.price / 100) * item.quantity)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
   return (
     <div className="text-center m-16 p-4">
@@ -30,6 +32,11 @@ export const Cart = () => {
       >
         Clear Cart
       </button>
+      {grandTotal === 0 ? (
+        <p>Your cart is currently empty</p>
+      ) : (
+        <p className="mt-1 mb-1">Total : ₹{grandTotal}</p>
+      )}
 
       <div className={`w-10/12 m-auto p-4 ${containerClassName}`}>
         <div>
@@ -76,7 +83,7 @@ export const Cart = () => {
               </div>
             </div>
           ))}
-        </div>{" "}
+        </div>
       </div>
     </div>
   );

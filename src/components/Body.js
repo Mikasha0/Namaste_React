@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { RestaurantCard, withHighRatings } from "./RestaurantCard";
-import { useState } from "react";
-import { Shimmer } from "./Shimmer";
+import React, { useState } from "react";
 import { useFetchFilterRestroList } from "../utils/useFetchFilterRestroList";
 import { useOnlineStatus } from "../utils/useOnlineStatus";
 import { OfflinePage } from "./OfflinePage";
-import { userContext } from "../utils/userContext";
+import { RestaurantCard, withHighRatings } from "./RestaurantCard";
+import { Shimmer } from "./Shimmer";
 export const Body = () => {
   const [
     restaurantList,
@@ -50,6 +48,7 @@ export const Body = () => {
                   .toLowerCase()
                   .includes(searchText.toLowerCase());
               });
+
               return setFilteredRestaurant(filterByName);
             }}
           >
@@ -93,16 +92,10 @@ export const Body = () => {
       >
         Veg Only
       </button>
-      {/* <input
-        placeholder="...write"
-        className="border border-gray-300 py-1.5 px-2 ml-3 rounded-lg"
-        value={user}
-        onChange={(e) => {
-          return setUserName(e.target.value);
-        }}
-      /> */}
 
       <div className="restaurant-container">
+        {filteredRestaurant.length === 0 ? <p>No Results FOund!</p> : null}
+
         {filteredRestaurant.map((data) => {
           return data.info.avgRating > 4.5 ? (
             <RestaurantCardPromoted key={data.info.id} resData={data.info} />
