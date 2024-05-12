@@ -20,7 +20,12 @@ export const Cart = () => {
 
   const containerClassName = cartData.length === 0 ? "bg-white" : "bg-gray-200";
   const grandTotal = cartData
-    .map((item) => (item.card.info.price / 100) * item.quantity)
+    .map(
+      (item) =>
+        (item.card.info.price !== undefined
+          ? item.card.info.price / 100
+          : item.card.info.defaultPrice / 100) * item.quantity
+    )
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
   return (
