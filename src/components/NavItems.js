@@ -24,10 +24,10 @@ export const NavItems = () => {
         </li>
         <li>
           <Link
-            to="/aboutUs"
+            to="/contact"
             className="text-white hover:text-gray-800 font-semibold text-sm"
           >
-            About Us
+            Contact
           </Link>
         </li>
       </ul>

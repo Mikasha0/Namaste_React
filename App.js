@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Header } from "./src/components/Header";
 import { Body } from "./src/components/Body";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import { AboutUs } from "./src/components/AboutUs";
+import { Contact } from "./src/components/Contact";
 import { ErrorPage } from "./src/components/ErrorPage";
 import { RestaurantMenu } from "./src/components/RestaurantMenu";
 import { Provider } from "react-redux";
@@ -37,7 +37,7 @@ const appRouter = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Body /> },
-      { path: "/aboutUs", element: <AboutUs /> },
+      { path: "/contact", element: <Contact /> },
       {path:"/cart", element:<Cart/>},
       { path: "restaurants/:resId", element: <RestaurantMenu /> },
     ],

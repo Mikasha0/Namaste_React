@@ -6,6 +6,7 @@ export const RestaurantCard = (props) => {
   const { resData } = props;
   const { name, avgRating, cloudinaryImageId, id } = resData;
   const deliveryTime = resData.sla.slaString;
+  console.log(resData)
 
   return (
     <div className="restaurant-card max-w-sm rounded overflow-hidden shadow-lg">
@@ -38,14 +39,14 @@ export const withHighRatings = (RestaurantCard) => {
         <div style={{ position: "relative" }}>
           <p
             style={{
-              width: '100px',
+              width: "100px",
               position: "absolute",
               top: 0,
               left: 10,
               padding: "2px 10px 5px 10px",
-              fontWeight:100,
-              color:'orange',
-              backgroundColor:'#D3D3D3'
+              fontWeight: 100,
+              color: "orange",
+              backgroundColor: "#D3D3D3",
             }}
           >
             High Rated

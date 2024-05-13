@@ -1,0 +1,63 @@
+{
+    "id": "82499",
+    "name": "UBQ by Barbeque Nation",
+    "cloudinaryImageId": "x0y6ioip45p0xqipdymj",
+    "locality": "MG Road",
+    "areaName": "Ashok Nagar",
+    "costForTwo": "₹300 for two",
+    "cuisines": [
+        "Barbecue",
+        "Biryani",
+        "Kebabs",
+        "Mughlai",
+        "Desserts"
+    ],
+    "avgRating": 4.1,
+    "parentId": "10804",
+    "avgRatingString": "4.1",
+    "totalRatingsString": "1K+",
+    "sla": {
+        "deliveryTime": 46,
+        "lastMileTravel": 4.8,
+        "serviceability": "SERVICEABLE",
+        "slaString": "45-50 mins",
+        "lastMileTravelString": "4.8 km",
+        "iconType": "ICON_TYPE_EMPTY"
+    },
+    "availability": {
+        "nextCloseTime": "2024-05-13 16:30:00",
+        "opened": true
+    },
+    "badges": {},
+    "isOpen": true,
+    "type": "F",
+    "badgesV2": {
+        "entityBadges": {
+            "imageBased": {},
+            "textBased": {},
+            "textExtendedBadges": {}
+        }
+    },
+    "aggregatedDiscountInfoV3": {
+        "header": "₹125 OFF",
+        "subHeader": "ABOVE ₹399",
+        "discountTag": "FLAT DEAL"
+    },
+    "orderabilityCommunication": {
+        "title": {},
+        "subTitle": {},
+        "message": {},
+        "customIcon": {}
+    },
+    "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+            "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+            "lottie": {},
+            "video": {}
+        }
+    },
+    "reviewsSummary": {},
+    "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+    "restaurantOfferPresentationInfo": {}
+}
