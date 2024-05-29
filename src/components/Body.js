@@ -71,7 +71,7 @@ export const Body = () => {
           type="button"
           className="res-filter font-extralight"
           onClick={() => {
-            letFilteredData = restaurantList.filter(
+            let letFilteredData = restaurantList.filter(
               (res) => res.info.avgRating > 4.4
             );
             return setFilteredRestaurant(letFilteredData);
@@ -83,7 +83,7 @@ export const Body = () => {
           type="button"
           className="res-filter font-extralight"
           onClick={() => {
-            letFilteredData = restaurantList.filter(
+           let letFilteredData = restaurantList.filter(
               (res) => res.info.sla.deliveryTime < 35
             );
             return setFilteredRestaurant(letFilteredData);
@@ -95,7 +95,7 @@ export const Body = () => {
           type="button"
           className="res-filter font-extralight"
           onClick={() => {
-            letFilteredData = restaurantList.filter(
+           let letFilteredData = restaurantList.filter(
               (res) => res?.info?.veg === true
             );
             return setFilteredRestaurant(letFilteredData);
