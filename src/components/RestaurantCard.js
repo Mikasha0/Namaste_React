@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const RestaurantCard = (props) => {
   const { resData } = props;
-  const { name, avgRating, cloudinaryImageId, id } = resData;
+  const { name, avgRating, cloudinaryImageId, id, cuisines } = resData;
   const deliveryTime = resData.sla.slaString;
   console.log(resData)
 
@@ -18,7 +18,7 @@ export const RestaurantCard = (props) => {
         />
         <div className="px-6 py-4">
           <div className="font-semibold text-sm text-gray-900 mb-2">{name}</div>
-          <p className="text-gray-800 text-sm mb-2">fooditems</p>
+          {/* <p className="text-gray-800 text-sm mb-2">{cuisines}</p> */}
           <p className="text-gray-800 text-sm mb-2">
             Delivery Time : {deliveryTime}
           </p>

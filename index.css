@@ -5,7 +5,6 @@
 .header-wrapper {
   /* position: relative; */
   width: 100%;
-  background-color: gray;
   z-index: 1;
   /* height: 330px; */
   /* background-image: url("./src/Images/burrger.jpg"); */
@@ -56,8 +55,8 @@
   border: 1px solid black;
   padding: 5px 10px;
   border-radius: 5px;
-  margin-left: 30px;
-  color: black
+  margin-left: 15px;
+  color: black;
 }
 
 .cloudinary {
@@ -142,7 +141,7 @@
 }
 
 .serch {
-  margin-top: 150px;
+  margin-top: 80px;
   margin-bottom: 30px;
 }
 
@@ -190,6 +189,10 @@
   border-radius: 5px;
 }
 
+/* .menu-item{
+  width: 300px;
+} */
+
 @media (min-width: 640px) {
   .restaurant-card {
     width: calc(20% - 20px);
@@ -209,4 +212,12 @@
     width: calc(20% - 20px);
     margin: 0 10px 20px;
   }
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

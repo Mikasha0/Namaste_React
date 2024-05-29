@@ -1,33 +1,29 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-export const NavItems = () => {
+import { IoHomeOutline } from "react-icons/io5";
+import { LuShoppingCart } from "react-icons/lu";
 
-  const cartItems = useSelector((store)=> store.cart.item)
+export const NavItems = () => {
+  const cartItems = useSelector((store) => store.cart.item);
   return (
     <div className="nav-items flex items-center ml-auto">
       <ul className="flex space-x-8">
         <li>
           <Link
             to="/"
-            className="text-white hover:text-gray-800 font-semibold text-sm"
+            className="text-black hover:text-gray-800 font-semibold text-sm flex font-extralight"
           >
+            <IoHomeOutline className=" mr-1" size={18} />
             Home
           </Link>
         </li>
         <li>
           <Link
             to="/cart"
-            className="text-white hover:text-gray-800 font-semibold text-sm"
+            className="text-black hover:text-gray-800 font-semibold text-sm flex font-extralight"
           >
-            Cart -({cartItems.length} items)
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/contact"
-            className="text-white hover:text-gray-800 font-semibold text-sm"
-          >
-            Contact
+            <LuShoppingCart className=" mr-1" size={18}/>
+            {cartItems.length} 
           </Link>
         </li>
       </ul>

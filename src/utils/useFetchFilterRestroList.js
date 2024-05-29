@@ -3,6 +3,7 @@ import { API_URL } from "./constant";
 export const useFetchFilterRestroList = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [menuItem, setMenuItems] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -20,11 +21,17 @@ export const useFetchFilterRestroList = () => {
     setFilteredRestaurant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setMenuItems(
+        json?.data?.cards[0]?.card?.card?.imageGridCards?.info
+    );
+    console.log(menuItem)
   };
   return [
     restaurantList,
     setRestaurantList,
     filteredRestaurant,
     setFilteredRestaurant,
+    menuItem,
+    setMenuItems
   ];
 };

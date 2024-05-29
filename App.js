@@ -9,6 +9,7 @@ import { RestaurantMenu } from "./src/components/RestaurantMenu";
 import { Provider } from "react-redux";
 import { Cart } from "./src/components/Cart";
 import appStore from "./src/utils/appStore";
+import Footer from "./src/components/Footer";
 
 const App = () => {
   // const [username, setUserName] = useState();
@@ -24,6 +25,7 @@ const App = () => {
         <div id="app">
           <Header />
           <Outlet />
+          <Footer/>
         </div>
     </Provider>
   );
