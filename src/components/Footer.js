@@ -22,10 +22,7 @@ const Footer = () => {
             src={NAMASTEDEV_LOGO}
             alt="Akshay Saini"
           />
-          <p className="text-white font-extralight mt-5 w-[250px]">
-            TMDB community built movie and TV database
-          </p>
-          <img className="w-[100px] mt-3" src={TMDB_LOGO} alt="TMDB Logo" />
+
         </div>
         <div className="main-heads">
           <h1 className="text-lg font-semibold text-white">FRONTEND LIBRARY</h1>

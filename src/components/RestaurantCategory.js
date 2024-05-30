@@ -1,7 +1,6 @@
 import { ItemList } from "./ItemList";
 
 export const RestaurantCategory = ({ category, showItem, setShowIndex }) => {
-  console.log(category)
   const handleClick = () => {
     setShowIndex();
   };

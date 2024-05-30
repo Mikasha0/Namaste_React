@@ -5,8 +5,7 @@ import { useDispatch } from "react-redux";
 export const ItemList = ({ item }) => {
   const dispatch = useDispatch();
   const handleAddItem = (list) => {
-    console.log(list)
-    console.log(dispatch(addItem(list)));
+    dispatch(addItem(list));
   };
   return (
     <div>

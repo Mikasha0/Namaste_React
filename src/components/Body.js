@@ -6,6 +6,7 @@ import { RestaurantCard, withHighRatings } from "./RestaurantCard";
 import { CiSearch } from "react-icons/ci";
 import { Shimmer } from "./Shimmer";
 import MenuList from "./MenuList";
+import headerImage from "../Images/header_img.png";
 export const Body = () => {
   const [
     restaurantList,
@@ -15,7 +16,6 @@ export const Body = () => {
     menuItem,
     setMenuItems,
   ] = useFetchFilterRestroList();
-  console.log(menuItem);
 
   const [searchText, setSearchText] = useState("");
 
@@ -33,7 +33,25 @@ export const Body = () => {
 
   return (
     <React.Fragment>
-      <div className="mt-[80px]  relative z-index-20 pl-8 pr-8">
+      <div className="mt-[80px] pr-8 pl-8 rounded-lg relative">
+        <img
+          className="w-full h-[400px] object-cover rounded-lg"
+          src={headerImage}
+          alt="header-img"
+        />
+        <div className="absolute inset-0 bg-black opacity-50 rounded-lg mr-8 ml-8"></div>
+
+        <p className="absolute top-[60px] md:top-[190px] lg:top-[190px]  text-white text-3xl font-extralight w-2/4 left-20">
+          Order Your Favourite Food Here
+        </p>
+        <p className="absolute top-[190px] md:top-[250px] lg:top-[250px] text-white text-base font-extralight w-2/4 left-20">
+          Enjoy a wide variety of delicious meals delivered straight to your
+          door. From local favorites to international cuisine, we've got
+          something to satisfy every craving.
+        </p>
+      </div>
+
+      <div className="mt-5  relative z-index-20 pl-8 pr-8">
         <MenuList title={"What's on your mind ?"} menus={menuItem} />
       </div>
       <h1 className="text-xl py-3 text-black font-bold pl-8 mb-3">
@@ -83,7 +101,7 @@ export const Body = () => {
           type="button"
           className="res-filter font-extralight"
           onClick={() => {
-           let letFilteredData = restaurantList.filter(
+            let letFilteredData = restaurantList.filter(
               (res) => res.info.sla.deliveryTime < 35
             );
             return setFilteredRestaurant(letFilteredData);
@@ -95,7 +113,7 @@ export const Body = () => {
           type="button"
           className="res-filter font-extralight"
           onClick={() => {
-           let letFilteredData = restaurantList.filter(
+            let letFilteredData = restaurantList.filter(
               (res) => res?.info?.veg === true
             );
             return setFilteredRestaurant(letFilteredData);
