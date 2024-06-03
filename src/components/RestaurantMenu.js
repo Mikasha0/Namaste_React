@@ -22,13 +22,26 @@ export const RestaurantMenu = () => {
     totalRatingsString = "",
   } = resInfo?.cards[2]?.card?.card?.info ?? {};
 
-  const categories =
+  let categories =
     resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => {
       return (
         c?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
     });
+  if (categories === undefined) {
+    categories =
+      resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (c) => {
+          return (
+            c?.card?.card?.["@type"] ===
+            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+          );
+        }
+      );
+  }
+
+  console.log(resInfo);
 
   return (
     <React.Fragment>
@@ -53,6 +66,7 @@ export const RestaurantMenu = () => {
         </div>
         <div className="menu-items">
           <div className="menu-item">
+            {console.log(categories)}
             {categories.map((category, index) => (
               <RestaurantCategory
                 key={category.card.card.title}

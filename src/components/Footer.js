@@ -1,11 +1,10 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import {
-  REACT_LOGO,
-  TMDB_LOGO,
   GITHUB,
   INSTAGRAM,
   NAMASTEDEV_LOGO,
+  REACT_LOGO
 } from "../utils/constant";
 const Footer = () => {
   return (

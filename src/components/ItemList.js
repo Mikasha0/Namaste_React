@@ -2,14 +2,14 @@ import { addItem } from "../utils/cartSlice";
 import { IMAGE_URL } from "../utils/constant";
 import { useDispatch } from "react-redux";
 
-export const ItemList = ({ item }) => {
+export const ItemList = (props) => {
   const dispatch = useDispatch();
   const handleAddItem = (list) => {
-    dispatch(addItem(list));
+    console.log(dispatch(addItem(list)));
   };
   return (
     <div>
-      {item.map((list) => (
+      {props.item.map((list) => (
         <div
           key={list.card.info.id}
           className="p-2 m-2  border-gray-400 border-b-2 flex justify-between text-left"
