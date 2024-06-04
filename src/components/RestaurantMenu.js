@@ -8,8 +8,9 @@ export const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useFetchRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(0);
+  console.log(resInfo)
 
-  if (resInfo === null) {
+  if (resInfo.length == 0) {
     return <Shimmer />;
   }
 
@@ -20,10 +21,10 @@ export const RestaurantMenu = () => {
     areaName = "",
     costForTwoMessage = "",
     totalRatingsString = "",
-  } = resInfo?.cards[2]?.card?.card?.info ?? {};
+  } = resInfo[0]?.cards[2]?.card?.card?.info ?? {};
 
   let categories =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => {
+    resInfo[0]?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => {
       return (
         c?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
@@ -31,7 +32,7 @@ export const RestaurantMenu = () => {
     });
   if (categories === undefined) {
     categories =
-      resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      resInfo[0]?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         (c) => {
           return (
             c?.card?.card?.["@type"] ===
@@ -41,7 +42,7 @@ export const RestaurantMenu = () => {
       );
   }
 
-  console.log(resInfo);
+  // console.log(resInfo);
 
   return (
     <React.Fragment>

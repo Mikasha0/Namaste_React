@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { Cart } from "./src/components/Cart";
 import appStore from "./src/utils/appStore";
 import Footer from "./src/components/Footer";
+import CommentContainer from "./src/components/CommentContainer";
 
 const App = () => {
   // const [username, setUserName] = useState();
@@ -22,11 +23,11 @@ const App = () => {
   // }, []);
   return (
     <Provider store={appStore}>
-        <div id="app">
-          <Header />
-          <Outlet />
-          <Footer/>
-        </div>
+      <div id="app">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
     </Provider>
   );
 };
@@ -40,7 +41,8 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "/", element: <Body /> },
       { path: "/contact", element: <Contact /> },
-      {path:"/cart", element:<Cart/>},
+      { path: "/cart", element: <Cart /> },
+      { path: "/comment", element: <CommentContainer /> },
       { path: "restaurants/:resId", element: <RestaurantMenu /> },
     ],
   },

@@ -22,8 +22,17 @@ export const NavItems = () => {
             to="/cart"
             className="text-black hover:text-gray-800 font-semibold text-sm flex font-extralight"
           >
-            <LuShoppingCart className=" mr-1" size={18}/>
-            {cartItems.length} 
+            <LuShoppingCart className=" mr-1" size={18} />
+            {cartItems.length}
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/comment"
+            className="text-black hover:text-gray-800 font-semibold text-sm flex font-extralight"
+          >
+            <LuShoppingCart className=" mr-1" size={18} />
+            Comments
           </Link>
         </li>
       </ul>
